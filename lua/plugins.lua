@@ -17,7 +17,7 @@ local ensure_packer = function()
 vim.cmd([[ 
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
 
