@@ -42,22 +42,10 @@ o.clipboard = "unnamedplus"
 o.ignorecase = true
 o.smartcase = true
 
--- Undo and backup options
-o.backup = false
-o.writebackup = false
-o.undofile = true
-o.swapfile = false
-o.undodir = "/home/adnan/.vim/undodir"
-
--- Remember 50 items in commandline history
-o.history = 50
 
 -- Better buffer splitting
 o.splitright = true
 o.splitbelow = true
-
--- auto session
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Preserve view while jumping
 --o.jumpoptions = 'view'
