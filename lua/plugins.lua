@@ -1,88 +1,80 @@
+-- autocommand that reloads neovim and installs/updates/removes plugins
+-- when file is saved
+vim.cmd([[ 
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
+  augroup end
+]])
+
 local status, packer = pcall(require, "packer")
 if not status then
 	print("Packer is not installed")
 	return
 end
 
--- Reloads Neovim after whenever you save plugins.lua
-vim.cmd([[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup END
-]])
-
-packer.startup(function(use)
+return packer.startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	-- lualine
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+
+	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
+  	use("savq/melange-nvim")
+  	use("shaunsingh/solarized.nvim")
+
+	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
+	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
+	
+	-- status line / lualine
+	use("nvim-lualine/lualine.nvim")
 
 	-- using packer.nvim
 	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
-	-- telescope
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-	})
-
-	use({
-		"nvim-tree/nvim-tree.lua",
-		requires = {
-			"nvim-tree/nvim-web-devicons", -- optional, for file icons
-		},
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
-	})
-
-	use("ryanoasis/vim-devicons")
+	
+	-- vscode like icons
 	use("nvim-tree/nvim-web-devicons")
 
-	-- auto-sessino
-	use("rmagatti/auto-session")
+	-- file explorer / nvim-tree
+	use("nvim-tree/nvim-tree.lua")
+
+	-- telescope
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- Comment
 	use("numToStr/Comment.nvim")
 
-	use("windwp/nvim-autopairs")
-
-	-- prettier
-	use({
-		"prettier/vim-prettier",
-		run = "yarn install",
-		ft = { "javascript", "typescript", "css", "less", "scss", "graphql", "markdown", "vue", "html" },
-	})
 
 	-- completions (cmp plugins)
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/mason.nvim") -- simple to use language server installer
 	use("williamboman/mason-lspconfig.nvim") -- simple to use language server installer
-	use("jose-elias-alvarez/null-ls.nvim") -- LSP diagnostics and code actions
-
-	-- colorschemes
-	use("joshdick/onedark.vim")
+	use("neovim/nvim-lspconfig") -- enable LSP
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		requires = {
+		  { "nvim-tree/nvim-web-devicons" },
+		  { "nvim-treesitter/nvim-treesitter" },
+		},
+	  }) 
+	  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+	  use("jose-elias-alvarez/null-ls.nvim") -- LSP diagnostics and code actions
+	  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+	  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
 	-- treesitter
 	use({
@@ -92,13 +84,8 @@ packer.startup(function(use)
 			ts_update()
 		end,
 	})
+
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-
-	-- Terminal
-	use("akinsho/toggleterm.nvim")
-
-	-- Markdown preview
-	--[[ use "ellisonleao/glow.nvim" ]]
 
 	-- gitsigns
 	use("lewis6991/gitsigns.nvim")
@@ -106,9 +93,12 @@ packer.startup(function(use)
 	-- parantheses and surrounds
 	use("p00f/nvim-ts-rainbow")
 
-	-- trim whitespace
-	use("cappyzawa/trim.nvim")
-	if PACKER_BOOTSTRAP then
-		packer.sync()
+	-- auto closing
+	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+	
+	
+	if packer_bootstrap then
+		require("packer").sync()
 	end
 end)
