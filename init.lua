@@ -1,6 +1,7 @@
 require("plugins") -- bootstrap packer
-require("base") -- basic settings
-require("maps") -- keymaps
+require("core.options") -- options
+require("core.keymaps") -- keymaps
+require("core.colorscheme") -- colorscheme
 require("config.autopair") -- configuration
 require("config.bufferline")
 require("config.cmp")
