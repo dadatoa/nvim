@@ -34,8 +34,8 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
-  	use("savq/melange-nvim")
-  	use("shaunsingh/solarized.nvim")
+	use("savq/melange-nvim")
+  use("shaunsingh/solarized.nvim")
 
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
