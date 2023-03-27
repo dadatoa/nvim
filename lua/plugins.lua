@@ -34,18 +34,18 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
-  	use("savq/melange-nvim")
-  	use("shaunsingh/solarized.nvim")
+  use("savq/melange-nvim")
+  use("shaunsingh/solarized.nvim")
 
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
 	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
-	
-	-- status line / lualine
+
+	-- status line / lualinei
 	use("nvim-lualine/lualine.nvim")
 
 	-- using packer.nvim
 	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
-	
+
 	-- vscode like icons
 	use("nvim-tree/nvim-web-devicons")
 
@@ -84,7 +84,7 @@ return packer.startup(function(use)
 		  { "nvim-tree/nvim-web-devicons" },
 		  { "nvim-treesitter/nvim-treesitter" },
 		},
-	  }) 
+	  })
 	  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	  use("jose-elias-alvarez/null-ls.nvim") -- LSP diagnostics and code actions
 	  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
@@ -110,8 +110,8 @@ return packer.startup(function(use)
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
-	
-	
+
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
