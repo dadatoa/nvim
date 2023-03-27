@@ -31,21 +31,6 @@ I personnaly prefer to use NVM for managing node versions, so instead of running
 
 The brew installation for neovim is a v0.8+ but I want to use some fancy updates from the v0.9+, so I uninstalled the v0.8 with `brew uninstall neovim` and go with `bew install neovim --HEAD` wich install the corresponding version of the last commit on the main branch, wich is 0.9+. 
 
-### Nvim-Treesitter Updates
-When nvim-treesitter updates, there might be breaking changes to corresponding parsers being used. I made a change to make sure parsers are automatically updated whenever nvim-treesitter is installed/updated. The code is found in this file: [plugins-setup.lua](.config/nvim/lua/josean/plugins-setup.lua)
-
-The updated code is this:
-```lua
-use({
-    "nvim-treesitter/nvim-treesitter",
-    run = function()
-      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-      ts_update()
-    end,
-  })
-
-```
-
 ## Plugins
 
 #### Plugin Manager
