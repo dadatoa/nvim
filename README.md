@@ -1,6 +1,0 @@
----
-description: readme neovim
----
-
-# README
-
