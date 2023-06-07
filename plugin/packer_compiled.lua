@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/dadatoa/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codeium.vim"] = {
+    loaded = true,
+    path = "/Users/dadatoa/.local/share/nvim/site/pack/packer/start/codeium.vim",
+    url = "https://github.com/Exafunction/codeium.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/dadatoa/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -251,15 +256,15 @@ _G.packer_plugins = {
     path = "/Users/dadatoa/.local/share/nvim/site/pack/packer/start/vim-ReplaceWithRegister",
     url = "https://github.com/inkarkat/vim-ReplaceWithRegister"
   },
-  ["vim-nightfly-guicolors"] = {
-    loaded = true,
-    path = "/Users/dadatoa/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors",
-    url = "https://github.com/bluz71/vim-nightfly-guicolors"
-  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/dadatoa/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["webc.nvim"] = {
+    loaded = true,
+    path = "/Users/dadatoa/.local/share/nvim/site/pack/packer/start/webc.nvim",
+    url = "https://github.com/bennypowers/webc.nvim"
   }
 }
 

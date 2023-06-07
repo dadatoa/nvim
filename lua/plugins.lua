@@ -33,7 +33,7 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
-	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
+ -- preferred colorscheme
 	use("savq/melange-nvim")
   use("shaunsingh/solarized.nvim")
 
@@ -43,7 +43,6 @@ return packer.startup(function(use)
 	-- status line / lualinei
 	use("nvim-lualine/lualine.nvim")
 
-	-- using packer.nvim
 	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 
 	-- vscode like icons
@@ -68,7 +67,10 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 
-	-- snippets
+  -- codeium IA auto-completion
+  use ("Exafunction/codeium.vim")
+
+  -- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
@@ -100,6 +102,10 @@ return packer.startup(function(use)
 	})
 
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+
+  -- additional color highlights
+  use ({"bennypowers/webc.nvim", requires = "nvim-treesitter/nvim-treesitter"})
+
 
 	-- gitsigns
 	use("lewis6991/gitsigns.nvim")
